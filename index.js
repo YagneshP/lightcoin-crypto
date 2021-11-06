@@ -3,7 +3,15 @@
 class Account {
   constructor(userName) {
     this.userName = userName;
-    this.balance = 0;
+    this.transaction = [];
+  }
+  get balance(){
+    let balance = this.transaction.reduce((acc, curr) => acc + curr.value, 0);
+    return balance;
+  }
+
+  addTransaction(transaction){
+    this.transaction.push(transaction);
   }
 }
 
@@ -13,7 +21,8 @@ class Transaction {
     this.account = account;
   }
   commit() {
-    this.account.balance += this.value;
+    this.time = new Date();
+    this.account.addTransaction(this);
    }
 }
 
