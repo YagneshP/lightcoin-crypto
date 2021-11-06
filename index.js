@@ -1,5 +1,12 @@
-let balance = 500.00;
+// let balance = 500.00;
 
+class Account {
+  constructor(userName) {
+    this.userName = userName;
+    this.balance = 0;
+  }
+
+}
 class Withdrawal {
 
   constructor(amount) {
@@ -10,6 +17,16 @@ class Withdrawal {
     balance -= this.amount;
   }
 
+}
+
+class Deposite {
+  constructor(amount) {
+    this.amount = amount;
+  }
+
+  commit() {
+    balance += this.amount;
+  }
 }
 
 
@@ -25,5 +42,8 @@ console.log('Transaction 1:', t1);
 t2 = new Withdrawal(9.99);
 t2.commit();
 console.log('Transaction 2:', t2);
+
+t3 = new Deposite(120);
+t3.commit();
 
 console.log('Balance:', balance);
